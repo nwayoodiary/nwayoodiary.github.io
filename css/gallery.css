@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'PoppinsB';
+    src: url('../font/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Consola';
+    src: url('../font/CONSOLA.TTF');
+}
+
+:root {
+    --bg2-color: #680000;
+    --bg1-color: #141313;
+    --bg-contact: #dadada;
+    --bg-home: #2b2b2b;
+    --font1-color: rgb(235, 243, 242);
+    --primary-shadow-color: rgba(0, 0, 0, 0.3);
+    --circle-progress-font-color: rgb(0, 255, 221);
+    --nav-height: 60px;
+    --font-main: 'Poppins', 'arial';
+    --font-main-bold: 'PoppinsB', 'arial';
+    --font-code: 'Consola';
+}
+
+html * {
+    font-family: var(--font-main);
+}
+
+body,
+html {
+    color: var(--font1-color);
+    background-color: var(--bg1-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.holder {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.bg {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+}
+
+.bg .line {
+    position: absolute;
+    top: 90%;
+    left: 80%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 100px;
+    height: 200vh;
+    background-color: rgb(180, 0, 0);
+}
+
+.bg svg.nod {
+    position: absolute;
+    width: 70%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 100;
+    color: rgb(255, 217, 0);
+    font-size: 2rem;
+}
+
+.bg svg.nod path {
+    stroke-dasharray: 395px;
+    stroke-dashoffset: 395px;
+    animation: nod-anim-stroke 1.5s forwards, nod-anim-fill 1s forwards 0.5s;
+}
+
+.bg .logo {
+    z-index: 1;
+    position: absolute;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gallery {
+    width: 100%;
+    top: 60%;
+    transform: translateY(-50%);
+    position: absolute;
+    overflow-x: scroll;
+    z-index: 2;
+    display: flex;
+    padding: 4rem 0 4rem 2rem;
+}
+
+.gallery .card {
+    z-index: 3;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(to top right, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
+    width: 400px;
+    min-height: 380px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-width: 250px;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: -1rem 0 3rem #000;
+    transition: all 0.3s;
+    border-top: solid 1px rgba(255, 255, 255, 0.3);
+    border-left: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+.gallery .card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.gallery .card:not(:first-child) {
+    margin-left: -130px;
+}
+
+.gallery .card span {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.gallery .card h2 {
+    font-family: var(--font-main-bold);
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.gallery .card p {
+    font-size: 12px;
+    margin: 3px 0;
+}
+
+.gallery .card a {
+    margin: 10px 0 5px 0;
+    text-decoration: none;
+    padding: 5px 15px;
+    border: solid 1px rgb(156, 156, 156);
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.gallery .card:hover {
+    transform: translateY(-1rem);
+}
+
+.gallery .card:hover~.card {
+    transform: translateX(130px);
+}
+
+.gallery .card a:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--bg1-color);
+}
+
+@keyframes nod-anim-stroke {
+    0% {
+        stroke-dashoffset: 395px;
+    }
+    50% {
+        stroke-dashoffset: 230px;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes nod-anim-fill {
+    0% {
+        fill: transparent;
+    }
+    100% {
+        fill: rgb(255, 217, 0);
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery .card {
+        width: 90vw;
+        height: 380px;
+    }
+    .gallery .card:not(:first-child) {
+        margin-left: -10px;
+    }
+    .gallery .card:hover {
+        transform: translateY(-2rem);
+    }
+    .gallery .card:hover~.card {
+        transform: translateX(10px);
+    }
+}

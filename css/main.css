@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'PoppinsB';
+    src: url('../font/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Consola';
+    src: url('../font/CONSOLA.TTF');
+}
+
+:root {
+    --bg2-color: #680000;
+    --bg1-color: #3d3d3d;
+    --bg-contact: #dadada;
+    --bg-home: #2b2b2b;
+    --font1-color: rgb(235, 243, 242);
+    --primary-shadow-color: rgba(0, 0, 0, 0.3);
+    --circle-progress-font-color: rgb(0, 255, 221);
+    --nav-height: 60px;
+    --font-main: 'Poppins', 'arial';
+    --font-main-bold: 'Poppins', 'arial';
+    --font-code: 'Consola';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+}
+
+body {
+    color: var(--font1-color);
+    background: linear-gradient(to bottom right, var(--bg-home), var(--bg1-color));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container a {
+    padding: 10px 30px;
+    border-radius: 30px;
+    background-color: rgb(255, 254, 239);
+    text-decoration: none;
+    color: var(--bg-home);
+    margin: 10px 0;
+    border: solid 1px rgb(255, 254, 239);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-container a:hover {
+    background: rgba(255, 230, 6, 0.1);
+    color: rgb(255, 254, 239);
+}
+
+.main-container a:first-child:hover {
+    background: rgba(255, 6, 6, 0.1);
+    color: rgb(255, 254, 239);
+}
+
+.bg svg.nod {
+    position: absolute;
+    width: 70%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 100;
+    color: rgb(255, 217, 0);
+    font-size: 2rem;
+}
+
+.bg svg.nod path {
+    stroke-dasharray: 395px;
+    stroke-dashoffset: 395px;
+    animation: nod-anim-stroke 1.5s forwards, nod-anim-fill 1.2s forwards 0.8s;
+}
+
+@keyframes nod-anim-stroke {
+    0% {
+        stroke-dashoffset: 395px;
+    }
+    50% {
+        stroke-dashoffset: 230px;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes nod-anim-fill {
+    0% {
+        fill: transparent;
+    }
+    100% {
+        fill: rgb(255, 217, 0);
+    }
+}
