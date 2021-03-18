@@ -137,7 +137,7 @@ getEntryToDisplay = (entry, lang) => {
             nick = nick_mm;
         }
     }
-    return {
+    let returnData = {
         name,
         nick,
         age,
@@ -151,6 +151,13 @@ getEntryToDisplay = (entry, lang) => {
         ftownship,
         img_url
     };
+    for (let key in returnData) {
+        let d = returnData[key];
+        if (!d || d == '' || d == undefined) {
+            returnData[key] = DEFAULT_NO_DATA;
+        }
+    }
+    return returnData;
 }
 
 showpopup = id => {
@@ -253,20 +260,23 @@ makePages = (len) => {
     if (maxPage <= 1) {
         html = `
         <a href="" class="page active">${maxPage}/${maxPage}</a>`;
-    } else
-    if (currentPage <= 1) {
+    } else if (currentPage <= 1) {
         html = `
-        <a href="" class="page active">1/${maxPage}</a>
-        <a href="?page=2&${extra}" class="page">Next &gt;</a>`;
+        <a href="" class="page active">1 / ${maxPage}</a>
+        <a href="?page=2&${extra}" class="page">&gt;</a>
+        <a href="?page=${maxPage}&${extra}" class="page">&gt;&gt;</a>`;
     } else if (currentPage >= maxPage) {
         html = `
-        <a href="?page=${maxPage-1}&${extra}" class="page">&lt; Prev</a>
-        <a href="" class="page active">${maxPage}/${maxPage}</a>`;
+        <a href="?page=${1}&${extra}" class="page">&lt;&lt;</a>
+        <a href="?page=${maxPage-1}&${extra}" class="page">&lt;</a>
+        <a href="" class="page active">${maxPage} / ${maxPage}</a>`;
     } else {
         html = `
-        <a href="?page=${currentPage-1}&${extra}" class="page">&lt; Prev</a>
-        <a href="" class="page active">${currentPage}/${maxPage}</a>
-        <a href="?page=${currentPage+1}&${extra}" class="page">Next &gt;</a>`;
+        <a href="?page=${1}&${extra}" class="page">&lt;&lt;</a>
+        <a href="?page=${currentPage-1}&${extra}" class="page">&lt;</a>
+        <a href="" class="page active">${currentPage} / ${maxPage}</a>
+        <a href="?page=${currentPage+1}&${extra}" class="page">&gt;</a>
+        <a href="?page=${maxPage}&${extra}" class="page">&gt;&gt;</a>`;
     }
     pages_container.innerHTML = html;
 }
@@ -278,8 +288,13 @@ makeCityCategory = (states, states_mm) => {
     for (let i = 0; i < states.length; i++) {
         const st = states[i];
         const stmm = states_mm[i];
-        html += `<a href="?state=${st}">${stmm}</a>\n`
-
+        if (currentLang == LANG_ZAWGYI)
+            html += `<a href="?state=${st}">${changeZawgyi(stmm)}</a>\n`;
+        else if (currentLang == LANG_UNICODE)
+            html += `<a href="?state=${st}">${stmm}</a>\n`;
+        else {
+            html += `<a href="?state=${st}">${st}</a>\n`;
+        }
     }
     html += `</div>`;
     states_container.innerHTML = html;

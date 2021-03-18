@@ -1,18 +1,5 @@
-@font-face {
-    font-family: 'Poppins';
-    src: url('../font/Poppins-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'PoppinsB';
-    src: url('../font/Poppins-Bold.ttf');
-}
-
-@font-face {
-    font-family: 'Consola';
-    src: url('../font/CONSOLA.TTF');
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;800&display=swap');
 :root {
     --bg2-color: #680000;
     --bg1-color: #3d3d3d;
@@ -22,9 +9,9 @@
     --primary-shadow-color: rgba(0, 0, 0, 0.3);
     --circle-progress-font-color: rgb(0, 255, 221);
     --nav-height: 60px;
-    --font-main: 'Poppins', 'arial';
-    --font-main-bold: 'Poppins', 'arial';
-    --font-code: 'Consola';
+    --font-main: 'Poppins', sans-serif;
+    --font-main-bold: 'Poppins', sans-serif;
+    --font-code: 'Inconsolata', monospace;
 }
 
 * {
@@ -39,6 +26,7 @@ body {
     background: linear-gradient(to bottom right, var(--bg-home), var(--bg1-color));
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -86,6 +74,32 @@ body {
     stroke-dasharray: 395px;
     stroke-dashoffset: 395px;
     animation: nod-anim-stroke 1.5s forwards, nod-anim-fill 1.2s forwards 0.8s;
+}
+
+.social {
+    margin-top: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+}
+
+.social a {
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 7px;
+    border-radius: 50%;
+    border: solid 1px rgb(149, 255, 255);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.social a:hover {
+    transform: rotate(360deg);
 }
 
 @keyframes nod-anim-stroke {

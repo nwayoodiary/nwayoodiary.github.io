@@ -10,11 +10,11 @@ const STORAGE_KEY_LANGUAGE = 'language';
 const LANG_ZAWGYI = 'zawgyi';
 const LANG_ENG = 'eng';
 const LANG_UNICODE = 'unicode';
+const DEFAULT_NO_DATA = '';
 
-
-const KEY_HERO_AGE = "gsx$age";
-const KEY_HERO_NAME = "gsx$name";
-const KEY_HERO_NAME_MM = "gsx$name-mm";
+const KEY_HERO_AGE = "gsx$age-en";
+const KEY_HERO_NAME = "gsx$realname";
+const KEY_HERO_NAME_MM = "gsx$realname-mm";
 const KEY_HERO_NICK = "gsx$nickname";
 const KEY_HERO_NICK_MM = "gsx$nickname-mm";
 const KEY_HERO_CAUSE = "gsx$cause";

@@ -1,18 +1,5 @@
-@font-face {
-    font-family: 'Poppins';
-    src: url('../font/Poppins-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'PoppinsB';
-    src: url('../font/Poppins-Bold.ttf');
-}
-
-@font-face {
-    font-family: 'Consola';
-    src: url('../font/CONSOLA.TTF');
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;800&display=swap');
 :root {
     --bg2-color: #680000;
     --bg1-color: #3d3d3d;
@@ -22,9 +9,9 @@
     --primary-shadow-color: rgba(0, 0, 0, 0.3);
     --circle-progress-font-color: rgb(0, 255, 221);
     --nav-height: 60px;
-    --font-main: 'Poppins', 'arial';
-    --font-main-bold: 'Poppins', 'arial';
-    --font-code: 'Consola';
+    --font-main: 'Poppins', sans-serif;
+    --font-main-bold: 'Poppins', sans-serif;
+    --font-code: 'Inconsolata', monospace;
 }
 
 * {
@@ -99,6 +86,10 @@ table tr:nth-child(8) {
     animation-delay: 1.4s;
 }
 
+table ul {
+    list-style: none;
+}
+
 table tr:nth-child(9) {
     animation-delay: 1.6s;
 }
@@ -109,6 +100,7 @@ table tr:nth-child(10) {
 
 table tr td span {
     color: rgb(0, 255, 34);
+    font-family: var(--font-code);
 }
 
 table td:first-child {
