@@ -155,6 +155,11 @@ body {
     line-height: 25px;
 }
 
+.detail-popup .container table tr {
+    opacity: 1;
+    animation: none;
+}
+
 .detail-popup .container table tr:nth-child(1) td {
     color: red;
     font-weight: 900;
@@ -411,4 +416,43 @@ body {
     .main .content .deaths h2 {
         font-size: 20px;
     }
+}
+
+@keyframes tr-anim {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+table tr {
+    opacity: 0;
+    animation: tr-anim 0.3s forwards;
+}
+
+table tr:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+table tr:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+table tr:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+table tr:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+table tr:nth-child(6) {
+    animation-delay: 1s;
+}
+
+table tr:nth-child(7) {
+    animation-delay: 1.2s;
 }
