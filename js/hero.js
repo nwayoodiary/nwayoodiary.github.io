@@ -89,24 +89,24 @@ changeLang = id => {
 }
 
 getEntryToDisplay = (entry, lang) => {
-    let age = entry[KEY_HERO_AGE].$t;
-    let name = entry[KEY_HERO_NAME].$t;
-    let name_mm = entry[KEY_HERO_NAME_MM].$t;
-    let nick = entry[KEY_HERO_NICK].$t;
-    let nick_mm = entry[KEY_HERO_NICK_MM].$t;
-    let cause = entry[KEY_HERO_CAUSE].$t;
-    let cause_mm = entry[KEY_HERO_CAUSE_MM].$t;
-    let dd = entry[KEY_HERO_DD].$t;
-    let state = entry[KEY_HERO_STATE].$t;
-    let state_mm = entry[KEY_HERO_STATE_MM].$t;
-    let addr = entry[KEY_HERO_ADDR].$t;
-    let addr_mm = entry[KEY_HERO_ADDR_MM].$t;
-    let fplace = entry[KEY_HERO_FALLEN_PLACE].$t;
-    let fplace_mm = entry[KEY_HERO_FALLEN_PLACE_MM].$t;
-    let gender = entry[KEY_HERO_GENDER].$t;
-    let ftownship = entry[KEY_HERO_FALLEN_TOWNSHIP].$t;
-    let ftownship_mm = entry[KEY_HERO_FALLEN_TOWNSHIP_MM].$t;
-    let img_url = entry[KEY_HERO_IMG_URL].$t;
+    let age = htmlEncode(entry[KEY_HERO_AGE].$t);
+    let name = htmlEncode(entry[KEY_HERO_NAME].$t);
+    let name_mm = htmlEncode(entry[KEY_HERO_NAME_MM].$t);
+    let nick = htmlEncode(entry[KEY_HERO_NICK].$t);
+    let nick_mm = htmlEncode(entry[KEY_HERO_NICK_MM].$t);
+    let cause = htmlEncode(entry[KEY_HERO_CAUSE].$t);
+    let cause_mm = htmlEncode(entry[KEY_HERO_CAUSE_MM].$t);
+    let dd = htmlEncode(entry[KEY_HERO_DD].$t);
+    let state = htmlEncode(entry[KEY_HERO_STATE].$t);
+    let state_mm = htmlEncode(entry[KEY_HERO_STATE_MM].$t);
+    let addr = htmlEncode(entry[KEY_HERO_ADDR].$t);
+    let addr_mm = htmlEncode(entry[KEY_HERO_ADDR_MM].$t);
+    let fplace = htmlEncode(entry[KEY_HERO_FALLEN_PLACE].$t);
+    let fplace_mm = htmlEncode(entry[KEY_HERO_FALLEN_PLACE_MM].$t);
+    let gender = htmlEncode(entry[KEY_HERO_GENDER].$t);
+    let ftownship = htmlEncode(entry[KEY_HERO_FALLEN_TOWNSHIP].$t);
+    let ftownship_mm = htmlEncode(entry[KEY_HERO_FALLEN_TOWNSHIP_MM].$t);
+    let img_url = htmlEncode(entry[KEY_HERO_IMG_URL].$t);
 
     let state_eng = state;
 
@@ -315,8 +315,8 @@ doMe = (json_arr) => {
 
     for (let i = 0; i < json_arr.length; i++) {
         const entry = json_arr[i];
-        const state = entry[KEY_HERO_STATE].$t;
-        const state_mm = entry[KEY_HERO_STATE_MM].$t;
+        const state = htmlEncode(entry[KEY_HERO_STATE].$t);
+        const state_mm = htmlEncode(entry[KEY_HERO_STATE_MM].$t);
         if (!states.includes(state)) {
             states.push(state);
             states_mm.push(state_mm);

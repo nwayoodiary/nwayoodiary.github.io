@@ -136,3 +136,10 @@ changeUnicode = text => {
     const converter = new google_myanmar_tools.ZawgyiConverter();
     return converter.zawgyiToUnicode(text);
 }
+
+htmlEncode = (s) => {
+    var el = document.createElement("div");
+    el.innerText = el.textContent = s;
+    s = el.innerHTML;
+    return s;
+}
