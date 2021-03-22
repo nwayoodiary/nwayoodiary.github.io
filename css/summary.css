@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;800&display=swap');
+:root {
+    --bg2-color: #2b2b2b;
+    --bg1-color: #141313;
+    --bg-contact: #dadada;
+    --bg-home: #2b2b2b;
+    --font1-color: rgb(235, 243, 242);
+    --primary-shadow-color: rgba(0, 0, 0, 0.3);
+    --circle-progress-font-color: rgb(0, 255, 221);
+    --nav-height: 60px;
+    --font-main: 'Poppins', sans-serif;
+    --font-main-bold: 'Poppins', sans-serif;
+    --font-code: 'Inconsolata', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+}
+
+body {
+    background-color: var(--bg1-color);
+}
+
+.detail-popup {
+    z-index: 10;
+    position: fixed;
+    width: 260px;
+    top: -100%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+}
+
+.detail-popup.active {
+    top: 50%;
+    left: 50%;
+}
+
+@keyframes popup-anim {
+    0% {
+        display: flex;
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.detail-popup .close {
+    z-index: 10;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: solid 1px #141313;
+    cursor: pointer;
+}
+
+.detail-popup .close:hover .close-line1 {
+    transform: rotate(-45deg);
+}
+
+.detail-popup .close:hover .close-line2 {
+    transform: rotate(45deg);
+}
+
+.detail-popup .close .close-line1,
+.detail-popup .close .close-line2 {
+    position: absolute;
+    height: 20px;
+    width: 5px;
+    background-color: #141313;
+    left: 12px;
+    top: 4px;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+
+.detail-popup .close .close-line1 {
+    transform: rotate(45deg);
+}
+
+.detail-popup .close .close-line2 {
+    transform: rotate(-45deg);
+}
+
+.detail-popup .btn-left,
+.detail-popup .btn-right {
+    position: absolute;
+    width: 40px;
+    height: 100px;
+    text-align: center;
+    flex-direction: column;
+    font-size: 40px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.detail-popup .btn-left {
+    left: -45px;
+}
+
+.detail-popup .btn-right {
+    right: -45px;
+}
+
+.detail-popup .btn-left:hover {
+    font-size: 35px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #2b2b2b;
+}
+
+.detail-popup .btn-right:hover {
+    font-size: 35px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #2b2b2b;
+}
+
+.detail-popup .container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    min-height: 300px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.detail-popup .container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.detail-popup .container td {
+    font-size: 17px;
+    font-family: var(--font-code);
+    line-height: 25px;
+}
+
+.detail-popup .container table tr:nth-child(1) td {
+    color: red;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.detail-popup .container table td:nth-child(2) {
+    padding: 0 20px 0 0;
+}
+
+.detail-popup .container table td:nth-child(3) {
+    text-align: end;
+}
+
+.main {
+    color: var(--font1-color);
+    background-color: var(--bg1-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.main .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .content .deaths {
+    height: 100vh;
+    display: flex;
+    padding: 30px 0;
+    flex-direction: column;
+}
+
+.main .content .deaths .values {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.main .content .deaths .values h3 {
+    margin-bottom: 20px;
+}
+
+.main .content .deaths .values p {
+    font-family: var(--font-code);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.main .content .deaths .values p span {
+    font-family: var(--font-code);
+    font-size: 15px;
+    color: lightgreen;
+}
+
+.main .content .deaths .values td {
+    font-family: var(--font-code);
+    line-height: 22px;
+    font-size: 15px;
+}
+
+.main .content .deaths .values table td:nth-child(2) {
+    padding: 0 10px;
+}
+
+.main .content .deaths .values table tr:nth-child(1) {
+    color: red;
+    font-weight: 900;
+}
+
+.main .content .deaths h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.main .content .deaths p {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.main .content .deaths p span {
+    color: aqua;
+}
+
+.main .content .deaths .map svg path {
+    fill: rgb(255, 255, 255);
+    stroke-width: 1px;
+    stroke: rgb(78, 78, 78);
+    cursor: pointer;
+}
+
+.main .content .deaths .map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.main .content .deaths .map svg path:hover {
+    stroke: rgb(0, 119, 255);
+    stroke-width: 3px;
+}
+
+
+/* dots loading */
+
+.loading-container.active {
+    display: flex;
+}
+
+.loading-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.loading-container h3 {
+    color: white;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.loading-container .dots-loading>div {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--bg2-color);
+    border-radius: 50%;
+    display: inline-block;
+    animation: 1.5s bounce infinite ease-in-out both;
+}
+
+.loading-container .dots-loading.white>div {
+    background: white;
+}
+
+.loading-container .dots-loading .dot1 {
+    animation-delay: -0.3s;
+}
+
+.loading-container .dots-loading .dot2 {
+    animation-delay: -0.15s;
+}
+
+@keyframes bounce {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+
+/* website setting icon */
+
+.website-setting {
+    top: 10px;
+    left: 10px;
+    z-index: 29;
+    position: fixed;
+}
+
+.website-setting .container .website-setting-icon {
+    width: 40px;
+    height: 40px;
+    transition: all 0.2s;
+}
+
+.website-setting .container .website-setting-icon img {
+    color: red;
+}
+
+.website-setting .container:hover .website-setting-items {
+    display: flex;
+}
+
+.website-setting .container:hover .website-setting-icon {
+    transform: rotate(45deg);
+}
+
+.website-setting-items {
+    display: none;
+    margin-left: 30px;
+    flex-direction: column;
+    background-color: rgb(214, 214, 214);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.website-setting-items p {
+    font-size: 16px;
+    font-weight: 900;
+    color: black;
+    padding: 10px;
+}
+
+.website-setting-items a {
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #141313;
+    transition: all 0.2s;
+}
+
+.website-setting-items a.active {
+    background-color: rgb(166, 173, 169);
+}
+
+.website-setting-items a:hover {
+    background-color: rgb(192, 192, 192);
+}
+
+
+/* ---- website setting icon ---- */
+
+@media screen and (max-width: 550px) {
+    .main .main-container h1 {
+        margin-bottom: 30px;
+    }
+    .detail-popup .btn-left {
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        color: #141313;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        left: -30px;
+    }
+    .detail-popup .btn-right {
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        color: #141313;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        right: -30px;
+    }
+    .main .content .deaths h2 {
+        font-size: 20px;
+    }
+}

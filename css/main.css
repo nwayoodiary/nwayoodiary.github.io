@@ -48,6 +48,10 @@ body {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+.main-container a span {
+    color: #680000;
+}
+
 .main-container a:hover {
     background: rgba(255, 230, 6, 0.1);
     color: rgb(255, 254, 239);

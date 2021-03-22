@@ -143,3 +143,16 @@ htmlEncode = (s) => {
     s = el.innerHTML;
     return s;
 }
+
+calcPercentage = (a, total) => {
+    return (a / total) * 100;
+}
+
+calcPercentageColor = (a, total) => {
+    return 255 - ((a / total) * 255);
+}
+
+objMax = obj => {
+    let arr = Object.values(obj);
+    return Math.max(...arr);
+}
